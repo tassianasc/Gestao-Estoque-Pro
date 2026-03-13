@@ -1,24 +1,56 @@
-node server.js
+# 📦 Gestão de Estoque Pro (Alpha Tech)
 
-##  TESTE ROTAS
+Uma API robusta para controle de inventário desenvolvida com foco em **auditoria de movimentações** e **escalabilidade**. O sistema permite a gestão completa de produtos, usuários e alertas de estoque crítico.
+
+---
+
+## 🏗️ Arquitetura e Padrões
+Este projeto utiliza o padrão **MVC (Model-View-Controller)** para garantir a separação de responsabilidades:
+* **Model:** Camada de persistência que lida diretamente com o PostgreSQL via queries SQL otimizadas.
+* **Controller:** Responsável pela lógica de negócio e validação de regras (ex: não permitir saída maior que o estoque atual).
+* **Routes/View:** Interface exposta via API REST, documentada com **Swagger (OpenAPI)**.
 
 
-* Busca exata por Ref: http://localhost:3000/produtos?ref=MDF-BR-15MM
-O que mudou: O Model agora sabe que ref na URL deve olhar para a coluna codigo_ref no banco.
 
-* Ver Inativos: http://localhost:3000/produtos?status=inativo
-Dica: Primeiro desative um produto usando o seu PATCH /desativar, senão a lista virá vazia mesmo.
+## 🛠️ Tecnologias e Ferramentas
+* **Node.js & Fastify:** Escolhido pela alta performance e baixo overhead em comparação ao Express.
+* **PostgreSQL:** Banco de dados relacional para garantir a integridade referencial (Foreign Keys).
+* **Docker & Docker Compose:** Containerização de toda a infraestrutura, garantindo que o projeto rode identicamente em qualquer máquina.
+* **JWT (JSON Web Token):** Sistema de autenticação para proteção de rotas sensíveis.
+* **Swagger:** Documentação interativa para testes rápidos de endpoints.
 
-* Ver Alertas: http://localhost:3000/produtos?alerta=true
-Resultado esperado: O seu MDF Branco TX 15mm deve aparecer sozinho, pois quantidade_atual (4) é menor que limite_alerta (5).
+---
 
-* Ver Categoria: http://localhost:3000/produtos?categoria=Chapas
+## 🐳 Como rodar com Docker (Passo a Passo)
 
-## Por que usar o Swagger?
-O Swagger (OpenAPI) não é apenas um "manual". Ele cria uma interface visual onde:
+Ideal para desenvolvedores que desejam subir o ambiente em segundos sem configurar o banco de dados manualmente.
 
-Você vê todas as suas rotas organizadas.
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/SEU_USUARIO/Gestao-Estoque-Pro.git](https://github.com/SEU_USUARIO/Gestao-Estoque-Pro.git)
+    cd Gestao-Estoque-Pro
+    ```
 
-Pode testar cada uma delas sem precisar do Insomnia.
+2.  **Configure as variáveis de ambiente:**
+    Crie um arquivo `.env` na raiz seguindo o modelo:
+    ```env
+    DB_USER=admin
+    DB_PASS=sua_senha
+    DB_NAME=sistema_estoque
+    DB_HOST=db
+    DB_PORT=5432
+    JWT_SECRET=sua_chave_secreta
+    ```
 
-Qualquer outro desenvolvedor (ou recrutador) entende o seu sistema em 30 segundos.
+3.  **Suba os containers:**
+    ```bash
+    docker-compose up -d
+    ```
+
+4.  **Acesse a Documentação:**
+    Vá em [http://localhost:3000/documentacao](http://localhost:3000/documentacao) para testar o sistema.
+
+---
+
+## 📊 Gestão de Dados Recomendada
+Para visualizar o banco de dados deste projeto, recomendamos o uso do **DBeaver** ou **pgAdmin 4**, conectando via `localhost:5432` com as credenciais definidas no seu `.env`.
