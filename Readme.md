@@ -58,3 +58,12 @@ Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado
 - Controllers: Onde fica a "lógica" (ex: não vender produto sem estoque).
 
 - Routes: Onde definimos os endereços da nossa API.
+---
+## 📸 Galeria do Sistema
+
+| Documentação Swagger | Teste de Endpoints |
+|:---:|:---:|
+| ![Swagger 1](./assets/api-docs-swagger.png) | ![Swagger 2](./assets/api-docs-swagger_2.png) |
+
+### 📊 Estrutura do Banco de Dados
+![Visualização no DBeaver](./assets/database-diagram.png)
