@@ -1,6 +1,7 @@
 # 📦 Gestão de Estoque Pro (Alpha Tech)
 
 Bem-vindo ao **Gestão de Estoque Pro**! Este sistema foi desenvolvido para facilitar o controle de inventário, permitindo gerenciar produtos, usuários e monitorar movimentações de estoque em tempo real.
+
 ---
 ## 🛠️ O que eu preciso para rodar? (Pré-requisitos)
 Para facilitar sua vida, este projeto usa **Docker**. Isso significa que você não precisa instalar o Banco de Dados (PostgreSQL) ou o Node.js manualmente na sua máquina.
@@ -28,7 +29,8 @@ Preencha os valores (ex: `DB_PASS=suasenha`).
 
 ### 3. Suba o sistema com Docker
 No terminal do VS Code, digite:
-```docker-compose up -d
+```
+docker-compose up -d
 ```
 O Docker vai baixar as imagens e configurar o banco e o servidor sozinho. Aguarde alguns instantes até que as luzes no Docker Desktop fiquem verdes.
 
