@@ -10,7 +10,7 @@ Para facilitar sua vida, este projeto usa **Docker**. Isso significa que você n
 2. **Git:** Para clonar o código.
 3. **VS Code:** Para visualizar o código.
 ---
-## 🚀 Passo a Passo p
+## 🚀 Passo a Passo
 
 ### 1. Clone o projeto
 Abra o terminal e digite:
