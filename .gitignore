@@ -1,0 +1,12 @@
+# Segredos e Configurações
+.env
+
+# Dependências (O Docker e o NPM instalam sozinhos)
+node_modules/
+npm-debug.log*
+
+# Arquivos de sistema e pastas de build
+.DS_Store
+dist/
+build/
+coverage/
