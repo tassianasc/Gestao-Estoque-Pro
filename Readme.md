@@ -1,56 +1,60 @@
-# 📦 Gestão de Estoque Pro
+# 📦 Gestão de Estoque Pro (Alpha Tech)
 
-Uma API robusta para controle de inventário desenvolvida com foco em **auditoria de movimentações** e **escalabilidade**. O sistema permite a gestão completa de produtos, usuários e alertas de estoque crítico.
-
----
-
-## 🏗️ Arquitetura e Padrões
-Este projeto utiliza o padrão **MVC (Model-View-Controller)** para garantir a separação de responsabilidades:
-* **Model:** Camada de persistência que lida diretamente com o PostgreSQL via queries SQL otimizadas.
-* **Controller:** Responsável pela lógica de negócio e validação de regras (ex: não permitir saída maior que o estoque atual).
-* **Routes/View:** Interface exposta via API REST, documentada com **Swagger (OpenAPI)**.
-
-
-
-## 🛠️ Tecnologias e Ferramentas
-* **Node.js & Fastify:** Escolhido pela alta performance e baixo overhead em comparação ao Express.
-* **PostgreSQL:** Banco de dados relacional para garantir a integridade referencial (Foreign Keys).
-* **Docker & Docker Compose:** Containerização de toda a infraestrutura, garantindo que o projeto rode identicamente em qualquer máquina.
-* **JWT (JSON Web Token):** Sistema de autenticação para proteção de rotas sensíveis.
-* **Swagger:** Documentação interativa para testes rápidos de endpoints.
+Bem-vindo ao **Gestão de Estoque Pro**! Este sistema foi desenvolvido para facilitar o controle de inventário, permitindo gerenciar produtos, usuários e monitorar movimentações de estoque em tempo real.
 
 ---
 
-## 🐳 Como rodar com Docker (Passo a Passo)
+## 🛠️ O que eu preciso para rodar? (Pré-requisitos)
+Para facilitar sua vida, este projeto usa **Docker**. Isso significa que você não precisa instalar o Banco de Dados (PostgreSQL) ou o Node.js manualmente na sua máquina.
 
-Ideal para desenvolvedores que desejam subir o ambiente em segundos sem configurar o banco de dados manualmente.
-
-1.  **Clone o repositório:**
-    ```bash
-    git clone [https://github.com/SEU_USUARIO/Gestao-Estoque-Pro.git](https://github.com/SEU_USUARIO/Gestao-Estoque-Pro.git)
-    cd Gestao-Estoque-Pro
-    ```
-
-2.  **Configure as variáveis de ambiente:**
-    Crie um arquivo `.env` na raiz seguindo o modelo:
-    ```env
-    DB_USER=admin
-    DB_PASS=sua_senha
-    DB_NAME=sistema_estoque
-    DB_HOST=db
-    DB_PORT=5432
-    JWT_SECRET=sua_chave_secreta
-    ```
-
-3.  **Suba os containers:**
-    ```bash
-    docker-compose up -d
-    ```
-
-4.  **Acesse a Documentação:**
-    Vá em [http://localhost:3000/documentacao](http://localhost:3000/documentacao) para testar o sistema.
+1. **Docker Desktop:** [Baixe aqui](https://www.docker.com/products/docker-desktop/) (Certifique-se de que ele esteja aberto antes de começar).
+2. **Git:** Para clonar o código.
+3. **VS Code:** Para visualizar o código.
 
 ---
 
-## 📊 Gestão de Dados Recomendada
-Para visualizar o banco de dados deste projeto, recomendamos o uso do **DBeaver** ou **pgAdmin 4**, conectando via `localhost:5432` com as credenciais definidas no seu `.env`.
+## 🚀 Passo a Passo para Iniciantes
+
+### 1. Clone o projeto
+Abra o terminal e digite:
+```
+git clone [https://github.com/tassianasc/Gestao-Estoque-Pro.git](https://github.com/tassianasc/Gestao-Estoque-Pro.git)
+cd Gestao-Estoque-Pro
+```
+### 2. Configure suas credenciais
+O projeto precisa de algumas "senhas" para funcionar.
+
+Crie um arquivo chamado `.env` na raiz do projeto.
+
+Copie o conteúdo do arquivo `.env.example` e cole dentro do seu novo `.env`.
+
+Preencha os valores (ex: `DB_PASS=suasenha`).
+
+### 3. Suba o sistema com Docker
+No terminal do VS Code, digite:
+```docker-compose up -d
+```
+O Docker vai baixar as imagens e configurar o banco e o servidor sozinho. Aguarde alguns instantes até que as luzes no Docker Desktop fiquem verdes.
+
+### 4. Onde vejo o sistema funcionando?
+Com o Docker rodando, o servidor já está ativo!
+
+* API / Documentação (Swagger): Acesse http://localhost:3000/documentacao
+
+* Lá você pode testar as rotas de login e cadastro direto pelo navegador.
+---
+### 📊 Visualizando os Dados (DBeaver)
+Para ver as tabelas e movimentações como um profissional de dados:
+
+1. Conecte seu **DBeaver** ao `localhost:5432`.
+
+2. Use o usuário e senha que você definiu no seu `.env`.
+---
+### 🏗️ Arquitetura MVC
+Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado e fácil de manter:
+
+- Models: Onde definimos como os dados são salvos no Postgres.
+
+- Controllers: Onde fica a "lógica" (ex: não vender produto sem estoque).
+
+- Routes: Onde definimos os endereços da nossa API.
