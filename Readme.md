@@ -16,6 +16,8 @@ Para facilitar sua vida, este projeto usa **Docker**. Isso significa que você n
 Abra o terminal e digite:
 ```
 git clone [https://github.com/tassianasc/Gestao-Estoque-Pro.git](https://github.com/tassianasc/Gestao-Estoque-Pro.git)
+```
+```
 cd Gestao-Estoque-Pro
 ```
 ### 2. Configure suas credenciais
