@@ -1,4 +1,4 @@
-# 📦 Gestão de Estoque Pro (Alpha Tech)
+# 📦 Gestão de Estoque Pro
 
 Uma API robusta para controle de inventário desenvolvida com foco em **auditoria de movimentações** e **escalabilidade**. O sistema permite a gestão completa de produtos, usuários e alertas de estoque crítico.
 
