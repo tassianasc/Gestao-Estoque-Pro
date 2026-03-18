@@ -98,3 +98,8 @@ Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado
 
 ### 📊 Estrutura do Banco de Dados
 ![Visualização no DBeaver](./assets/database-diagram.png)
+🔗**Acesso Rápido**
+
+- Documentação (Swagger): <http://localhost:3000/documentacao>
+
+- Porta do Banco (Postgres): `5432`
