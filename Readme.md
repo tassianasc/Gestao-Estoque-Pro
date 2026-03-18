@@ -21,12 +21,12 @@ Para facilitar sua vida, este projeto usa **Docker**. Isso significa que você n
 
 ### 1. Clone o projeto
 Abra o terminal e digite:
-```
+`
 git clone [https://github.com/tassianasc/Gestao-Estoque-Pro.git](https://github.com/tassianasc/Gestao-Estoque-Pro.git)
-```
-```
+`
+`
 cd Gestao-Estoque-Pro
-```
+`
 ### 2. Configure suas credenciais
 O projeto precisa de algumas "senhas" para funcionar.
 
@@ -38,9 +38,9 @@ Preencha os valores (ex: `DB_PASS=suasenha`).
 
 ### 3. Suba o sistema com Docker
 No terminal da raiz do projeto, execute:
-```
+`
 docker-compose up -d --build
-```
+`
 O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos em segundo plano.
 
 ### 4. Onde vejo o sistema funcionando?
@@ -62,15 +62,16 @@ docker-compose down
 ---
 🔄 **Reiniciar apenas a API**
 Se você fez alterações no código e quer garantir que elas foram aplicadas:
-```
+`
 docker-compose restart app
-```
+`
+
 ---
 📜 **Ver Logs em Tempo Real**
 Para "ouvir" o que o servidor está processando (erros, conexões, logs de acesso):
-```
+`
 docker logs -f estoque_api
-```
+`
 (Pressione Ctrl + C para sair da visualização dos logs sem desligar o servidor).
 
 ---
@@ -98,6 +99,7 @@ Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado
 
 ### 📊 Estrutura do Banco de Dados
 ![Visualização no DBeaver](./assets/database-diagram.png)
+---
 🔗**Acesso Rápido**
 
 - Documentação (Swagger): <http://localhost:3000/documentacao>
