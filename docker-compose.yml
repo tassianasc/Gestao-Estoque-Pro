@@ -7,9 +7,9 @@ services:
     container_name: estoque_db
     restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: 2Rd11=$"
-      POSTGRES_DB: sistema_estoque
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:
@@ -23,16 +23,16 @@ services:
     ports:
       - "3000:3000"   # Túnel: Porta 3000 do Windows -> Porta 3000 do Docker
     environment:
-      DB_USER: admin
-      DB_PASS: 2Rd11=$"
-      DB_NAME: sistema_estoque
+      DB_USER: ${DB_USER}
+      DB_PASS:  ${DB_PASS}
+      DB_NAME: ${DB_NAME}
       DB_HOST: db     # Importante: No Docker, o host é o nome do serviço (db), não localhost
       DB_PORT: 5432
-      JWT_SECRET: 154I&nmaujbdWWB
+      JWT_SECRET: ${JWT_SECRET}
     depends_on:
       - db            # Avisa ao Docker para ligar o banco ANTES de ligar o servidor
     volumes:
-      - ./backend:/usr/src/app # "Espelhamento": O que você mudar no VS Code muda no Docker na hora!
+      - ./backend:/usr/src/app # "Espelhamento": O que mudar no VS Code muda no Docker na hora!
       - /usr/src/app/node_modules # Evita que o Docker sobrescreva as dependências
 
 volumes:
