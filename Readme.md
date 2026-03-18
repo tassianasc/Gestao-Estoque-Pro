@@ -1,6 +1,7 @@
 # 📦 Gestão de Estoque Pro
 
 O **Gestão de Estoque Pro** é uma API robusta para controle de estoque, desenvolvida com Node.js e PostgreSQL, totalmente conteinerizada com Docker. O sistema permite o gerenciamento de produtos, usuários, movimentações de entrada/saída e alertas de estoque baixo.
+
 ---
 ## 🛠️ Tecnologias Utilizadas
 - Backend: Node.js (Fastify)
