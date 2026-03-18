@@ -46,9 +46,9 @@ O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos e
 ### 4. Onde vejo o sistema funcionando?
 Com o Docker rodando, o servidor já está ativo!
 
-* API / Documentação (Swagger): Acesse http://localhost:3000/documentacao
-
-* Lá você pode testar as rotas de login e cadastro direto pelo navegador.
+* API / Documentação (Swagger): Acesse <http://localhost:3000/documentacao>
+Lá você pode testar as rotas de login e cadastro direto pelo navegador.
+* Porta do Banco (Postgres): `5432`
 ---
 ### 💡 Dicas de Operação (Cheat Sheet)
 
@@ -99,8 +99,3 @@ Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado
 ### 📊 Estrutura do Banco de Dados
 ![Visualização no DBeaver](./assets/database-diagram.png)
 ---
-🔗**Acesso Rápido**
-
-- Documentação (Swagger): <http://localhost:3000/documentacao>
-
-- Porta do Banco (Postgres): `5432`
