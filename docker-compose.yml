@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # --- SERVIÇO DO BANCO DE DADOS ---
   db:
     image: postgres:15
     container_name: estoque_db
@@ -13,6 +14,26 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  # --- NOVO: SERVIÇO DO SERVIDOR (BACKEND) ---
+  app:
+    build: ./backend          # Diz ao Docker para procurar o seu 'Dockerfile' na pasta atual
+    container_name: estoque_api
+    restart: always
+    ports:
+      - "3000:3000"   # Túnel: Porta 3000 do Windows -> Porta 3000 do Docker
+    environment:
+      DB_USER: admin
+      DB_PASS: 2Rd11=$"
+      DB_NAME: sistema_estoque
+      DB_HOST: db     # Importante: No Docker, o host é o nome do serviço (db), não localhost
+      DB_PORT: 5432
+      JWT_SECRET: 154I&nmaujbdWWB
+    depends_on:
+      - db            # Avisa ao Docker para ligar o banco ANTES de ligar o servidor
+    volumes:
+      - ./backend:/usr/src/app # "Espelhamento": O que você mudar no VS Code muda no Docker na hora!
+      - /usr/src/app/node_modules # Evita que o Docker sobrescreva as dependências
 
 volumes:
   postgres_data:
