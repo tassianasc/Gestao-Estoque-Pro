@@ -47,6 +47,7 @@ O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos e
 Com o Docker rodando, o servidor já está ativo!
 
 * API / Documentação (Swagger): Acesse <http://localhost:3000/documentacao>
+  
 Lá você pode testar as rotas de login e cadastro direto pelo navegador.
 * Porta do Banco (Postgres): `5432`
 ---
