@@ -16,7 +16,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  # --- NOVO: SERVIÇO DO SERVIDOR (BACKEND) ---
+  # --- SERVIÇO DO SERVIDOR (BACKEND) ---
   app:
     build: ./backend          # Diz ao Docker para procurar o seu 'Dockerfile' na pasta atual
     container_name: estoque_api
@@ -33,10 +33,10 @@ services:
     depends_on:
       - db            # Avisa ao Docker para ligar o banco ANTES de ligar o servidor
     volumes:
-      - ./backend:/usr/src/app # "Espelhamento": O que mudar no VS Code muda no Docker na hora!
+      - ./backend:/usr/src/app # "Espelhamento": O que mudar no VS Code muda no Docker na hora
       - /usr/src/app/node_modules # Evita que o Docker sobrescreva as dependências
 
-# DECLARAÇÃO GLOBAL: Aqui apenas listamos os nomes dos volumes (sem traços ou caminhos)
+# DECLARAÇÃO GLOBAL
 volumes:
   postgres_data:
 

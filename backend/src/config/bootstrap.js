@@ -2,7 +2,7 @@ const usuarioModel = require('../models/usuarioModel');
 
 /**
  * Função de inicialização automática (Bootstrap).
- * Agora com lógica de "Retry" para esperar o banco de dados ligar.
+ * Utiliza a lógica de "Retry" para esperar o banco de dados ligar.
  */
 const inicializarAdmin = async (tentativas = 5) => {
     console.log(`🔍 [Bootstrap] Tentando conectar ao banco... (Tentativas restantes: ${tentativas})`);

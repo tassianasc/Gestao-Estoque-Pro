@@ -42,8 +42,6 @@ async function usuarioRoutes(fastify, options) {
         }
     };
 
-    // --- DEFINIÇÃO DAS ROTAS (Todas dentro da função!) ---
-
     // Login
     fastify.post('/login', loginSchema, usuarioController.login);
 
@@ -56,7 +54,6 @@ async function usuarioRoutes(fastify, options) {
     // Cadastrar usuário
     fastify.post('/usuarios', cadastroSchema, usuarioController.cadastrarUsuario);
 
-    // Editar usuário (A parte que deu erro antes)
     fastify.patch('/usuarios/:id', { 
         preHandler: verificarAdmin,
         schema: { 

@@ -69,7 +69,7 @@ async function produtoRoutes(fastify, options) {
                     limite_alerta: { type: 'number', description: 'Novo estoque mínimo de segurança' },
                     ref: { type: 'string', description: 'Nova referência (se precisar mudar o código)' }
                 }
-                // Note que não incluímos 'quantidade_atual' aqui para respeitar a trava de auditoria!
+                
             }
         }
     }, produtoController.editarProduto);

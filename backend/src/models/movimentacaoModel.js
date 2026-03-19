@@ -43,7 +43,6 @@ const registrar = async (movimentacao) => {
 };
 
 const listarTodas = async () => {
-    // Note que mudei de data_hora para data_movimentacao aqui
     const sql = `
         SELECT 
             m.id,

@@ -55,10 +55,9 @@ const listarTodos = async (filtros = {}) => {
 };
 
 const atualizarPorRef = async (ref, dados) => {
-    // 1. Desestruturamos os dados que o Controller enviou
     const { nome, categoria, limite_alerta } = dados;
 
-    // 2. O SQL precisa usar 'ref' no WHERE e 'limite_alerta' no SET
+    
     const sql = `
         UPDATE produtos 
         SET nome = $1, categoria = $2, limite_alerta = $3 

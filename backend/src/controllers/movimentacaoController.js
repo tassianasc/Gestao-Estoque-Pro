@@ -31,5 +31,4 @@ const listarMovimentacoes = async (request, reply) => {
     }
 };
 
-// EXPORTAÇÃO COMPLETA
 module.exports = { criarMovimentacao, listarMovimentacoes };

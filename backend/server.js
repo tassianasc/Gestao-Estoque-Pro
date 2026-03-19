@@ -2,7 +2,7 @@ require('dotenv').config();
 
 // 1. Instância do servidor
 const fastify = require('fastify')({ logger: true });
-// Importamos a lógica de inicialização automática
+// lógica de inicialização automática
 const { inicializarAdmin } = require('./src/config/bootstrap');
 
 // 2. Plugins de Segurança e Autenticação
@@ -65,7 +65,6 @@ const start = async () => {
         // Liga o servidor na porta 3000
         await fastify.listen({ port: 3000, host: '0.0.0.0' });
         
-        // --- O PULO DO GATO ---
         // Assim que o servidor liga, verificamos se precisamos criar o Admin
         await inicializarAdmin();
 

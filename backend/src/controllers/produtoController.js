@@ -17,7 +17,7 @@ const listarProdutos = async (request, reply) => {
         const { nome } = request.query;
 
         // Se o usuário logado for ESTOQUISTA, forçamos apenasAtivos: true
-        // Se for ADMIN, futuramente você pode permitir ver os inativos
+        // Se for ADMIN, futuramente você pode ver os inativos
         const apenasAtivos = request.user.cargo !== 'ADMIN' ? true : true; 
 
         const produtos = await produtoModel.listarTodos(request.query);
@@ -80,7 +80,7 @@ const listarAlertas = async (request, reply) => {
             total_itens_criticos: produtosEmAlerta.length,
             itens: produtosEmAlerta,
             mensagem: produtosEmAlerta.length > 0 
-                ? "Atenção: Os itens abaixo estão com estoque igual ou abaixo do limite!" 
+                ? "Atenção: Os itens destacados estão com estoque igual ou abaixo do limite!" 
                 : "Tudo certo! Nenhum item em estado crítico."
         });
     } catch (erro) {

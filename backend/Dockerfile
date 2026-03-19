@@ -1,4 +1,4 @@
-# 1. Escolhe a imagem oficial do Node.js (a versão 18 é estável e ótima)
+# 1. Escolhe a imagem oficial do Node.js
 FROM node:18
 
 # 2. Cria a pasta onde o código vai morar dentro do "computador" do Docker
@@ -16,5 +16,5 @@ COPY . .
 # 6. Avisa que o servidor vai rodar na porta 3000
 EXPOSE 3000
 
-# 7. O comando mágico que você digitava no VS Code, agora o Docker faz pra você!
+# 7. O comando mágico rodando no o Docker
 CMD ["node", "server.js"]
