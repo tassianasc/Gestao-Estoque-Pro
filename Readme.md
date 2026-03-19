@@ -16,18 +16,18 @@ O **Gestão de Estoque Pro** é uma API robusta para controle de estoque, desenv
 3. **VS Code:** Para visualizar o código.
 Se acabou de clonar este repositório, siga estes passos para configurar o ambiente:
 
-** Preparar Variáveis de Ambiente**
+**Preparar Variáveis de Ambiente**
 * Copie o conteúdo de .env.example.
 * Crie um ficheiro chamado .env na raiz do projeto.
 * Cole o conteúdo e ajuste as suas credenciais.
   
-** Subir a Infraestrutura**
+**Subir a Infraestrutura**
 Certifique-se de que o Docker Desktop está a correr e execute:
 ```
 docker-compose up -d --build
 ```
 O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos em segundo plano.
-** Configuração do Banco de Dados**
+**Configuração do Banco de Dados**
 O projeto está configurado para criar as tabelas e o usuário administrador automaticamente na primeira execução (Bootstrap).
 
 ## 🔑 Credenciais de Acesso (Padrão)
@@ -50,6 +50,7 @@ Lá você pode testar as rotas de login e cadastro direto pelo navegador.
 ---
 ### Dicas de Operação (Cheat Sheet)
 Aqui estão os comandos essenciais para gerenciar o ambiente de desenvolvimento:
+
 💡 **Ligar o Sistema**
 Sobe os contêineres em segundo plano:
 ```
