@@ -11,39 +11,36 @@ O **Gestão de Estoque Pro** é uma API robusta para controle de estoque, desenv
 - Segurança: JWT (JSON Web Tokens)
 ---
 ## 🐳 Como Executar com Docker
-Para facilitar sua vida, este projeto usa **Docker**. Isso significa que você não precisa instalar o Banco de Dados (PostgreSQL) ou o Node.js manualmente na sua máquina.
-
 1. **Docker Desktop:** (Certifique-se de que ele esteja baixado e aberto antes de começar).
 2. **Git:** Para clonar o código.
 3. **VS Code:** Para visualizar o código.
----
-## 🚀 Passo a Passo
+Se acabou de clonar este repositório, siga estes passos para configurar o ambiente:
 
-### 1. Clone o projeto
-Abra o terminal e digite:
-```
-git clone [https://github.com/tassianasc/Gestao-Estoque-Pro.git](https://github.com/tassianasc/Gestao-Estoque-Pro.git)
-```
-```
-cd Gestao-Estoque-Pro
-```
-### 2. Configure suas credenciais
-O projeto precisa de algumas "senhas" para funcionar.
-
-Crie um arquivo chamado `.env` na raiz do projeto.
-
-Copie o conteúdo do arquivo `.env.example` e cole dentro do seu novo `.env`.
-
-Preencha os valores (ex: `DB_PASS=suasenha`).
-
-### 3. Suba o sistema com Docker
-No terminal da raiz do projeto, execute:
+** Preparar Variáveis de Ambiente**
+* Copie o conteúdo de .env.example.
+* Crie um ficheiro chamado .env na raiz do projeto.
+* Cole o conteúdo e ajuste as suas credenciais.
+  
+** Subir a Infraestrutura**
+Certifique-se de que o Docker Desktop está a correr e execute:
 ```
 docker-compose up -d --build
 ```
 O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos em segundo plano.
+** Configuração do Banco de Dados**
+O projeto está configurado para criar as tabelas e o usuário administrador automaticamente na primeira execução (Bootstrap).
 
-### 4. Onde vejo o sistema funcionando?
+## 🔑 Credenciais de Acesso (Padrão)
+Após subir o container pela primeira vez, utilize os dados abaixo para o primeiro login via Swagger:
+
+Login: `admin`
+
+Senha: `admin123`
+
+**Nota:** Estas credenciais podem ser alteradas no seu ficheiro .env antes da primeira execução.
+
+---
+### Onde vejo o sistema funcionando?
 Com o Docker rodando, o servidor já está ativo!
 
 * API / Documentação (Swagger): Acesse <http://localhost:3000/documentacao>
@@ -51,28 +48,33 @@ Com o Docker rodando, o servidor já está ativo!
 Lá você pode testar as rotas de login e cadastro direto pelo navegador.
 * Porta do Banco (Postgres): `5432`
 ---
-### 💡 Dicas de Operação (Cheat Sheet)
-
+### Dicas de Operação (Cheat Sheet)
 Aqui estão os comandos essenciais para gerenciar o ambiente de desenvolvimento:
-
-🛑 **Parar o Sistema**
-Para desligar todos os contêineres e liberar os recursos do computador:
+💡 **Ligar o Sistema**
+Sobe os contêineres em segundo plano:
 ```
-docker-compose down
+docker-compose up -d
 ```
----
-🔄 **Reiniciar apenas a API**
-Se você fez alterações no código e quer garantir que elas foram aplicadas:
+🔄 **Reiniciar a API**
+Útil para aplicar mudanças rápidas no código sem desligar o banco:
 ```
 docker-compose restart app
 ```
----
-📜 **Ver Logs em Tempo Real**
+👁️ **Ver logs no terminal (Debug)**
 Para "ouvir" o que o servidor está processando (erros, conexões, logs de acesso):
 ```
 docker logs -f estoque_api
 ```
-(Pressione Ctrl + C para sair da visualização dos logs sem desligar o servidor).
+🛑 **Parar o Sistema**
+Desliga os contêineres e libera os recursos do computador:
+```
+docker-compose down
+```
+⚠️ **Reset Total (Limpar Dados)**
+Para apagar todos os registros do banco e começar do zero **(cuidado!)**:
+```
+docker-compose down -v
+```
 
 ---
 ### 📊 Visualizando os Dados (DBeaver)
@@ -80,7 +82,7 @@ Para ver as tabelas e movimentações como um profissional de dados:
 
 1. Conecte seu **DBeaver** ao `localhost:5432`.
 
-2. Use o usuário e senha que você definiu no seu `.env`.
+2. Use o usuário e senha definidos no seu `.env`.
 ---
 ### 🏗️ Arquitetura MVC
 Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado e fácil de manter:
