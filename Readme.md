@@ -22,15 +22,15 @@ Se acabou de clonar este repositório, siga estes passos para configurar o ambie
 * Cole o conteúdo e ajuste as suas credenciais.
   
 **Subir a Infraestrutura**
-Certifique-se de que o Docker Desktop está funcionando e execute:
+Certifique-se de que o Docker Desktop está aberto e execute:
 ```
 docker-compose up -d --build
 ```
 O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos em segundo plano.
 
-**Configuração do Banco de Dados**
+**Configuração Automática (Bootstrap)**
 
-O projeto está configurado para criar as tabelas e o usuário administrador automaticamente na primeira execução (Bootstrap).
+O projeto conta com uma lógica de **Bootstrap.** Na primeira vez que o sistema ligar, o servidor verificará se o banco está vazio e criará automaticamente as tabelas e o usuário administrador.
 
 ## 🔑 Credenciais de Acesso (Padrão)
 Após subir o container pela primeira vez, utilize os dados abaixo para o primeiro login via Swagger:
@@ -39,16 +39,17 @@ Login: `admin`
 
 Senha: `admin123`
 
-**Nota:** Estas credenciais podem ser alteradas no seu ficheiro .env antes da primeira execução.
+**Nota:** Estas credenciais podem ser alteradas no seu ficheiro .env antes da primeira execução;
+São essenciais para obter o Token JWT no Swagger.
 
 ---
-### Onde vejo o sistema funcionando?
+### 🌍 Onde vejo o sistema funcionando?
 Com o Docker rodando, o servidor já está ativo!
 
-* API / Documentação (Swagger): Acesse <http://localhost:3000/documentacao>
-  
-Lá você pode testar as rotas de login e cadastro direto pelo navegador.
-* Porta do Banco (Postgres): `5432`
+*  API / Documentação (Swagger): : Acesse <http://localhost:3000/documentacao>
+   *Aqui você testa login, cadastro e movimentações sem precisar de um Frontend.
+   
+* 🐘 Porta do Banco (Postgres) `5432`
 ---
 ### Dicas de Operação (Cheat Sheet)
 Aqui estão os comandos essenciais para gerenciar o ambiente de desenvolvimento:
@@ -85,6 +86,8 @@ Para ver as tabelas e movimentações como um profissional de dados:
 1. Conecte seu **DBeaver** ao `localhost:5432`.
 
 2. Use o usuário e senha definidos no seu `.env`.
+
+3. Navegue em `Schemas > public > Tables` para ver os dados.
 ---
 ### 🏗️ Arquitetura MVC
 Este projeto segue o padrão **Model-View-Controller**, o que o torna organizado e fácil de manter:
