@@ -29,6 +29,7 @@ docker-compose up -d --build
 O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos em segundo plano.
 
 **Configuração do Banco de Dados**
+
 O projeto está configurado para criar as tabelas e o usuário administrador automaticamente na primeira execução (Bootstrap).
 
 ## 🔑 Credenciais de Acesso (Padrão)
