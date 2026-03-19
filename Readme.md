@@ -27,6 +27,7 @@ Certifique-se de que o Docker Desktop está a correr e execute:
 docker-compose up -d --build
 ```
 O comando acima constrói a imagem da API, baixa o banco de dados e liga ambos em segundo plano.
+
 **Configuração do Banco de Dados**
 O projeto está configurado para criar as tabelas e o usuário administrador automaticamente na primeira execução (Bootstrap).
 
@@ -76,7 +77,6 @@ Para apagar todos os registros do banco e começar do zero **(cuidado!)**:
 ```
 docker-compose down -v
 ```
-
 ---
 ### 📊 Visualizando os Dados (DBeaver)
 Para ver as tabelas e movimentações como um profissional de dados:
