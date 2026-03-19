@@ -22,7 +22,7 @@ Se acabou de clonar este repositório, siga estes passos para configurar o ambie
 * Cole o conteúdo e ajuste as suas credenciais.
   
 **Subir a Infraestrutura**
-Certifique-se de que o Docker Desktop está a correr e execute:
+Certifique-se de que o Docker Desktop está funcionando e execute:
 ```
 docker-compose up -d --build
 ```
