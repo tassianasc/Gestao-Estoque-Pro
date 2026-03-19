@@ -2,27 +2,24 @@ require('dotenv').config();
 
 // 1. Instância do servidor
 const fastify = require('fastify')({ logger: true });
+// Importamos a lógica de inicialização automática
+const { inicializarAdmin } = require('./src/config/bootstrap');
 
 // 2. Plugins de Segurança e Autenticação
 fastify.register(require('@fastify/jwt'), {
-  secret: process.env.JWT_SECRET,
+  secret: process.env.JWT_SECRET || 'chave_secreta_padrao',
   sign: {
     expiresIn: '12h'
   }
 });
 
 // 3. Documentação Automática (Swagger)
-// Importante: Registrar ANTES das rotas para que ele possa mapeá-las corretamente
 fastify.register(require('@fastify/swagger'), {
   openapi: {
     info: {
-      title: 'Gestão de Estoque',
-      description: 'Solução robusta para controle de inventário, auditoria de movimentações e gestão de acessos.',
+      title: 'Alpha Tech - Gestão de Estoque',
+      description: 'Solução robusta para controle de inventário e gestão de acessos.',
       version: '1.0.0',
-      contact: {
-        name: 'Suporte Técnico',
-        email: 'tassia.eng@exemplo.com'
-      }
     },
     components: {
       securitySchemes: {
@@ -39,13 +36,8 @@ fastify.register(require('@fastify/swagger'), {
 fastify.register(require('@fastify/swagger-ui'), {
   routePrefix: '/documentacao',
   theme: {
-    title: 'Alpha Tech - Gestão de Estoque',
-    //  Escondendo a logo original via CSS
-    css: [
-      {
-        content: '.swagger-ui .topbar .link img { display: none; }' 
-      }
-    ]
+    title: 'Alpha Tech - API Docs',
+    css: [{ content: '.swagger-ui .topbar .link img { display: none; }' }]
   },
   uiConfig: {
     docExpansion: 'list',
@@ -62,7 +54,7 @@ fastify.register(require('./src/routes/movimentacaoRoutes'));
 fastify.get('/', async (request, reply) => {
     return { 
         status: 'API Online',
-        projeto: 'Controle de Estoque Operacional',
+        projeto: 'Alpha Tech Operacional',
         documentacao: '/documentacao'
     };
 });
@@ -70,10 +62,16 @@ fastify.get('/', async (request, reply) => {
 // 6. Inicialização (O motor)
 const start = async () => {
     try {
+        // Liga o servidor na porta 3000
         await fastify.listen({ port: 3000, host: '0.0.0.0' });
-        console.clear(); // Limpa a sujeira do terminal
+        
+        // --- O PULO DO GATO ---
+        // Assim que o servidor liga, verificamos se precisamos criar o Admin
+        await inicializarAdmin();
+
+        console.clear();
         console.log('=========================================');
-        console.log('   SISTEMA DE GESTÃO DE ESTOQUE PRO    ');
+        console.log('    SISTEMA DE GESTÃO DE ESTOQUE PRO    ');
         console.log('=========================================');
         console.log('🚀 Status: ONLINE');
         console.log('📖 Documentação: http://localhost:3000/documentacao');

@@ -1,0 +1,31 @@
+-- 1. CRIAÇÃO DAS TABELAS
+CREATE TABLE IF NOT EXISTS usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    login VARCHAR(50) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL,
+    cargo VARCHAR(50) DEFAULT 'OPERADOR',
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS produtos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    ref VARCHAR(50) UNIQUE NOT NULL,
+    categoria VARCHAR(50),
+    quantidade_atual INTEGER DEFAULT 0,
+    limite_alerta INTEGER DEFAULT 5,
+    ativo BOOLEAN DEFAULT TRUE,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS movimentacoes (
+    id SERIAL PRIMARY KEY,
+    produto_id INTEGER REFERENCES produtos(id),
+    usuario_id INTEGER REFERENCES usuarios(id),
+    tipo VARCHAR(20) CHECK (tipo IN ('ENTRADA', 'SAIDA', 'ATIVACAO', 'DESATIVACAO', 'AJUSTE')),
+    quantidade INTEGER NOT NULL,
+    observacao TEXT,
+    data_movimentacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
